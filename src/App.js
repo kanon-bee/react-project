@@ -6,6 +6,7 @@ import InfoCard from "./components/InfoCard";
 function App() {
   return (
     <div className="App">
+      Hello
       <BrowserRouter>
         <Route exact path="/" component={NameList} />
         <Route exact path="/users/:id" component={InfoCard} />

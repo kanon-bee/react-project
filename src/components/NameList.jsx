@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-
-import Api from "../api/integAPI";
+import axios from "axios";
+// import Api from "../api/integAPI";
 import UserCard from "./UserCard";
 
 const NameList = () => {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await Api.get("/users");
-      setUsers(response.data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await Api.get("/users");
+  //     setUsers(response.data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res => {
+      setUsers(res.data);
+    }).catch(err => {
+      console.log(err);
+    })
+  })
 
   const renderUsers = () => {
     return (
